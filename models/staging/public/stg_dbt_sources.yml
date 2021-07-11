@@ -1,0 +1,28 @@
+version: 2
+sources:
+  - name: public
+    description: Default data source (public schema in postgres)
+    database: airbyte_data_warehouse
+    tables:
+      - name: jaffle_shop_customers
+        description: Source for customers base data
+        columns:
+          - name: id
+            description: Primary key for customers
+            tests:
+              - unique
+              - not_null
+      - name: jaffle_shop_orders
+        description: Source for order base data
+        columns:
+          - name: id
+            description: Primary key for orders
+            tests:
+              - unique
+              - not_null 
+      - name: stripe_payments
+        description: the freshness doesnt work due to the double quotes issue most probabaly
+        loaded_at_field: "CREATED"
+        freshness:
+          warn_after: {count: 2, period: day}
+          error_after: {count: 5, period: day}
