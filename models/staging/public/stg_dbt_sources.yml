@@ -21,7 +21,7 @@ sources:
               - unique
               - not_null 
       - name: stripe_payments
-        description: the freshness doesnt work due to the double quotes issue most probabaly
+        description: the freshness doesnt work due to the double quotes issue most probably
         loaded_at_field: "CREATED"
         freshness:
           warn_after: {count: 2, period: day}
