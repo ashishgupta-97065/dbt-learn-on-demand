@@ -1,7 +1,7 @@
 version: 2
 sources:
   - name: public
-    description: Default data source (public schema in postgres)
+    description: Default data source (public schema in postgres). Tests dont work probably due to the double quotes issue of postgres
     database: airbyte_data_warehouse
     tables:
       - name: jaffle_shop_customers
@@ -21,7 +21,7 @@ sources:
               - unique
               - not_null 
       - name: stripe_payments
-        description: the freshness doesnt work due to the double quotes issue most probably
+
         loaded_at_field: "CREATED"
         freshness:
           warn_after: {count: 2, period: day}
